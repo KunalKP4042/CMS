@@ -1,6 +1,5 @@
 <?php
     if(isset($_POST['create_post'])){
-        echo "This works";
         $post_title = $_POST['title'];
         $post_author = $_POST['post_author'];
         $post_category_id = $_POST['post_category_id'];
@@ -16,6 +15,7 @@
         $result = mysqli_query($connection,$qry);
             if(!$result)
                 die("Query Failed".mysqli_error($connection));
+        echo "<h3>POST ADDED SUCCESSFULLY</h3>";
     }
 ?>
    <form action="" method="post" enctype="multipart/form-data">

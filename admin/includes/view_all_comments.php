@@ -39,8 +39,8 @@
                                 echo "<td><a href='../post.php?post_id=$comment_post_id'>$post_title</td>";
                             }
                                 echo "<td>$comment_date</td>";
-                                echo "<td><a href='posts.php?delete='>Approve</a></td>";
-                                echo "<td><a href='posts.php?delete='>Unapprove</a></td>";
+                                echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
+                                echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
                                 echo "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
                                 echo "</tr>";
                             }
@@ -52,6 +52,26 @@
     if(isset($_GET['delete'])){
         $delete_comment_id=$_GET['delete'];
         $qry="DELETE FROM comments WHERE comment_id = $delete_comment_id";
+        $result=mysqli_query($connection,$qry);
+        if(!$result)
+            die("Query Failed".mysqli_error($connection));
+        header('Location:comments.php');
+    }
+
+
+    if(isset($_GET['approve'])){
+        $approve_comment_id=$_GET['approve'];
+        $qry="UPDATE comments SET comment_status = 'Approved' WHERE comment_id=$approve_comment_id";
+        $result=mysqli_query($connection,$qry);
+        if(!$result)
+            die("Query Failed".mysqli_error($connection));
+        header('Location:comments.php');
+    }
+
+
+    if(isset($_GET['unapprove'])){
+        $approve_comment_id=$_GET['unapprove'];
+        $qry="UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id=$approve_comment_id";
         $result=mysqli_query($connection,$qry);
         if(!$result)
             die("Query Failed".mysqli_error($connection));

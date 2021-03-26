@@ -20,16 +20,16 @@
                             else
                                 $source='';
                             switch($source){
-                                case 'add_post' : 
-                                    include "includes/add_post.php";
+                                case 'add_users' : 
+                                    include "includes/add_users.php";
                                     break;
-                                case 'edit_post' :
-                                    include "includes/edit_post.php";
+                                case 'edit_users' :
+                                    include "includes/edit_users.php";
                                     break;
                                 case '300' : echo "300";
                                     break;
                                 default:
-                        include "includes/view_all_post.php";
+                        include "includes/view_all_users.php";
                         }
                      ?>    
                      </div>
