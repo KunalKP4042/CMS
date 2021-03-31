@@ -38,6 +38,7 @@
             
             $result=mysqli_query($connection,$qry);
             confirmQuery($result);
+            echo "<h3>POST UPDATED SUCCESSFULLY</h3>";
         }
     }
 ?>
